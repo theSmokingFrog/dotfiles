@@ -21,11 +21,12 @@ alias psx="ps auxw"
 alias xx="exit"
 alias ff="find . -iname" ## Param with Quotes
 alias tarex="tar -vxzf"
-alias resource="source ~/.bash_profile && echo 'Reloading .bash_profile done!'"
+alias resource="source ~/.bash_profile && echo '» Reloading .bash_profile done!'"
 alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
 
 # --------------------[ Applications ]--------------------
 alias chrome="open -a /Applications/Google\ Chrome.app/"
+alias code="open -a /Applications/Visual\ Studio\ Code.app/"
 
 # --------------------[ Listings ]--------------------
 # Detect which `ls` flavor is in use (GNU oder OSX)
