@@ -141,9 +141,10 @@ function googl() {
    elif [ -z $GOOGLEAPIKEY ]; then
        echo "Export your API Key to \$GOOGLEAPIKEY";
        return 1;
+   else
+       curl -s https://www.googleapis.com/urlshortener/v1/url?key=$GOOGLEAPIKEY \
+       -H 'Content-Type: application/json' \
+       -d '{"longUrl":"$1"}' | \
+       python -c "import sys, json; print json.load(sys.stdin)['id']"
    fi
-   curl -s https://www.googleapis.com/urlshortener/v1/url?key=$GOOGLEAPIKEY \
-   -H 'Content-Type: application/json' \ 
-   -d '{"longUrl":"http://www.google.com/"}' | \
-   python -c "import sys, json; print json.load(sys.stdin)['id']"
 }
