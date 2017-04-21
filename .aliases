@@ -12,7 +12,7 @@ alias -- --="cd - > /dev/null"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias gg="cd /vcs/git/"
-alias gd="cd /development/"
+alias gd="cd ~/Development/"
 alias gs="cd /vcs/svn/"
 
 # --------------------[ Essentials ]--------------------
@@ -55,6 +55,8 @@ alias status="git status"
 alias fetch="git fetch"
 alias push="git push"
 alias pull="git pull"
+alias merge="git merge"
+alias cpick="git cherry-pick"
 alias fp="fetch && pull"
 
 alias logd="git log --oneline --decorate --graph"

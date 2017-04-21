@@ -134,6 +134,7 @@ function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+# Incomplete!
 function googl() {
    if [ -z "${1}" ]; then
        echo "'Ussage: googl [URL]'";

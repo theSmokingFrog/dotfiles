@@ -13,6 +13,7 @@ unset file;
 shopt -s nocaseglob; ## Case-insensitive globbing (used in pathname expansion)
 shopt -s histappend; ## Append to the Bash history file, rather than overwriting it
 
+#> Bash Completion errors on "source"
 # Add tab completion for many Bash commands
 #if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 #    source "$(brew --prefix)/share/bash-completion/bash_completion";
