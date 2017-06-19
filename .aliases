@@ -26,7 +26,6 @@ alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
 
 # --------------------[ Applications ]--------------------
 alias chrome="open -a /Applications/Google\ Chrome.app/"
-alias code="open -a /Applications/Visual\ Studio\ Code.app/"
 
 # --------------------[ Listings ]--------------------
 # Detect which `ls` flavor is in use (GNU oder OSX)
