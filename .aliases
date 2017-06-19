@@ -36,6 +36,7 @@ else
 fi
 
 alias ll="ls -lh"
+alias lt="ls -lht"
 alias la="ls -lhA"
 alias ld="ls -lh | grep '^d'"
 
