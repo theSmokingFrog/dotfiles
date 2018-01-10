@@ -7,7 +7,6 @@ function doIt() {
         --exclude ".gitignore" \
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
-        --exclude "LICENSE-MIT.txt" \
         --exclude ".idea" \
         -avh --no-perms . ~;
     echo "»» Syncing done!";

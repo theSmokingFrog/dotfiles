@@ -149,3 +149,17 @@ function googl() {
        python -c "import sys, json; print json.load(sys.stdin)['id']"
    fi
 }
+
+function gar() {
+  if [ -z "${1}" -o -z "${2}" ]; then
+      echo "Usage: gar branch destination";
+      return 1;
+  fi;
+  if ${git rev-parse --is-inside-work-tree} eq 'true'; then
+    echo "Exporting branch $1 to $2..."
+    git archive $1 | tar -x -C $2
+    echo "Done."
+  else
+    echo "Not a .git-Repository"
+  fi;
+}
