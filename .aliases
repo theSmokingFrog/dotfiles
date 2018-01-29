@@ -68,6 +68,20 @@ alias sst='svn status'
 alias sco='svn checkout'
 alias sci='svn commit'
 
+# --------------------[ Docker ]--------------------
+alias dps='docker ps'
+alias dimg='docker images'
+alias dcb='docker-compose build'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
+alias dlogs='docker logs'
+alias dcstop='docker-compose stop'
+alias dcstart='docker-compose start'
+
+function dbash() {
+    docker exec -it ${1} "bash"
+}
+
 # --------------------[ Time and Date ]--------------------
 alias week='date +%V' # Diplays the week number
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date' # Stopwatch
