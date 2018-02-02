@@ -82,6 +82,17 @@ function dbash() {
     docker exec -it ${1} "bash"
 }
 
+# --------------------[ Node / NPM ]--------------------
+alias nlg='npm -g list --depth=0'
+alias nog='npm -g outdated'
+
+# --------------------[ Homebrew ]--------------------
+alias brup='brew update'
+alias brug='brew upgrade'
+alias brod='brew outdated'
+alias brli='brew list'
+alias brcl='brew cleanup'
+
 # --------------------[ Time and Date ]--------------------
 alias week='date +%V' # Diplays the week number
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date' # Stopwatch
