@@ -53,6 +53,9 @@
     # Shortcut to cherry-pick
     cp = cherry-pick
 
+    # Shortcut to list ignored files
+    ig = status --ignored
+
 [apply]
 
     # Detect whitespace errors when applying a patch
