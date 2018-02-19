@@ -134,3 +134,7 @@
 [url "git://gist.github.com/"]
 
     insteadOf = "gist:"
+
+[url "ssh://git@hatendlichfreunde.de:36869/"]
+
+    insteadOf = "hef:"
