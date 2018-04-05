@@ -56,6 +56,10 @@
     # Shortcut to list ignored files
     ig = status --ignored
 
+    lg = log --pretty=shortlog --date=short
+
+    co = checkout
+
 [apply]
 
     # Detect whitespace errors when applying a patch
@@ -112,6 +116,12 @@
 
     # Include summaries of merged commits in newly created merge commit messages
     log = true
+[log]
+    date = relative
+[format]
+    pretty = shortlog
+[pretty]
+    shortlog = format:%C(auto,yellow)%h%C(auto,magenta)%C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(26,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
 
 # URL shorthands
 
