@@ -117,11 +117,11 @@
     # Include summaries of merged commits in newly created merge commit messages
     log = true
 [log]
-    date = relative
+    date = format:%d. %B %Y - %H:%M:%S
 [format]
     pretty = shortlog
 [pretty]
-    shortlog = format:%C(auto,yellow)%h%C(auto,magenta)%C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(26,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+    shortlog = format:%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%<(30,trunc)%ad %C(auto,green)%<(26,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
 
 # URL shorthands
 
