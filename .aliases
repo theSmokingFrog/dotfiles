@@ -78,6 +78,7 @@ alias dcdown='docker-compose down'
 alias dlogs='docker logs'
 alias dcstop='docker-compose stop'
 alias dcstart='docker-compose start'
+alias docker-composeg='docker-compose -f docker-compose-base.yml -f docker-compose-dev.yml'
 
 function dbash() {
     docker exec -it ${1} "bash"
