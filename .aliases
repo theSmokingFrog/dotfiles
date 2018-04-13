@@ -27,6 +27,7 @@ alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
 # --------------------[ Applications ]--------------------
 alias chrome="open -a /Applications/Google\ Chrome.app/"
 alias kraken="open -a ~/Applications/GitKraken.app"
+alias typora="open -a ~/Applications/Typora.app/"
 
 # --------------------[ Listings ]--------------------
 # Detect which `ls` flavor is in use (GNU oder OSX)
