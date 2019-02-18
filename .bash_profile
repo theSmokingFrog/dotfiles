@@ -16,15 +16,15 @@ shopt -s histappend; ## Append to the Bash history file, rather than overwriting
 
 #> Bash Completion errors on "source"
 # Add tab completion for many Bash commands
-#if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-#    source "$(brew --prefix)/share/bash-completion/bash_completion";
-#elif [ -f /etc/bash_completion ]; then
-#    source /etc/bash_completion;
-#fi;
+if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+    source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
 
 # Enable tab completion for 'git' by marking it as an alias for 'git'
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    complete -o default -o nospace -F _git git;
+    complete -o default -o nospace -F _git g;
 fi;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
@@ -38,4 +38,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Arcanist
 [ -s "$ARCANIST/resources/shell/bash-completion" ] && \. "$ARCANIST/resources/shell/bash-completion" # bash completion for arcanist
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

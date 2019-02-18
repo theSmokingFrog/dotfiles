@@ -73,12 +73,14 @@ alias sci='svn commit'
 # --------------------[ Docker ]--------------------
 alias dps='docker ps'
 alias dimg='docker images'
+alias dlogs='docker logs'
+
 alias dcb='docker-compose build'
 alias dcup='docker-compose up'
 alias dcdown='docker-compose down'
-alias dlogs='docker logs'
 alias dcstop='docker-compose stop'
 alias dcstart='docker-compose start'
+alias dcg='docker-compose -f docker-compose-base.yml -f docker-compose-dev.yml'
 alias docker-composeg='docker-compose -f docker-compose-base.yml -f docker-compose-dev.yml'
 
 function dbash() {

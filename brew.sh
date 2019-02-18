@@ -1,55 +1,14 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
+BREW_PREFIX=$(brew --prefix)
 
-# Make sure we’re using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade
-
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
-# Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
-brew install bash
-brew tap homebrew/versions
-brew install bash-completion2
+# Install Brewfile in the current directory
+brew bundle
 
 # Switch to using brew-installed bash as default shell
-if ! fgrep -q '$(brew --prefix)/bash' /etc/shells; then
-  echo '$(brew --prefix)/bash' | sudo tee -a /etc/shells;
-  chsh -s $(brew --prefix)/bash;
+if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
-# Install `wget` with IRI support.
-brew install wget
-
-# Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-
-# Install other useful binaries.
-brew install ack
-brew install p7zip
-brew install pv
-brew install rename
-brew install ssh-copy-id
-brew install tree
-brew install neofetch
-brew install zopfli
-brew install pigz
-
-# Remove outdated versions from the cellar.
-brew cleanup
+unset BREW_PREFIX

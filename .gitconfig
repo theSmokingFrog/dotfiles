@@ -60,6 +60,8 @@
 
     co = checkout
 
+    bytag = rev-list -n 1
+
 [apply]
 
     # Detect whitespace errors when applying a patch
