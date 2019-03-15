@@ -112,6 +112,7 @@ command -v hd > /dev/null || alias hd="hexdump -C" ## Canonical hex dump; some s
 command -v md5sum > /dev/null || alias md5sum="md5" ## macOS has no 'md5sum', so use 'md5' as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum" ## macOS has no 'sha1sum', so use 'shasum' as a fallback
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete" ## Recursively delete #.DS_Store' files
+alias cleanemptydirs="find . -type d -depth -empty -exec rmdir "{}" \;" ## Recursively deletes empty folders within a folder structure
 
 # --------------------[ System ]--------------------
 # Show / Hide hidden files in Finder.app
