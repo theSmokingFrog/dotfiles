@@ -9,6 +9,9 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
+# Let's tap the stuff for Aamzon WebServices
+tap "aws/tap"
+
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add '$(brew --prefix coreutils)/libexec/gnubin' to '$PATH'.
 brew "coreutils"
