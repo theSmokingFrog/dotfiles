@@ -10,6 +10,11 @@ function doIt() {
         --exclude ".idea" \
         -avh --no-perms . ~;
     echo "»» Syncing done!";
+
+    echo "»» Replacing Version Values";
+    gsed -i "s/#VERSION_GIT_SHORT/#$(git rev-parse --short HEAD)/g" ~/.bash_profile
+    gsed -i "s/#DATE_GIT_COMMIT/$(git log -1 --format=%cd)/g" ~/.bash_profile
+
     echo "»» Reload ~/.bash_profile to see changes!";
 }
 

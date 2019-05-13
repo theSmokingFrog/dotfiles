@@ -2,6 +2,8 @@
 # Add '~/bin' to the '$PATH'
 export PATH="$HOME/bin:$PATH";
 
+alias vv='echo "#VERSION_GIT_SHORT --- #DATE_GIT_COMMIT"'
+
 # Loading dotfiles and some extensions:
 # ~/.path is used for system specific $PATH-Extension.
 # ~/.extra is used for system specific Extension that should not be commited.
