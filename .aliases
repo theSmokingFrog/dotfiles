@@ -26,7 +26,6 @@ alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
 
 # --------------------[ Applications ]--------------------
 alias chrome="open -a /Applications/Google\ Chrome.app/"
-alias kraken="open -a ~/Applications/GitKraken.app"
 alias typora="open -a ~/Applications/Typora.app/"
 
 # --------------------[ Listings ]--------------------
@@ -113,6 +112,8 @@ command -v md5sum > /dev/null || alias md5sum="md5" ## macOS has no 'md5sum', so
 command -v sha1sum > /dev/null || alias sha1sum="shasum" ## macOS has no 'sha1sum', so use 'shasum' as a fallback
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete" ## Recursively delete #.DS_Store' files
 alias cleanemptydirs="find . -type d -depth -empty -exec rmdir "{}" \;" ## Recursively deletes empty folders within a folder structure
+alias lnm="find . -name 'node_modules' -type d -prune|xargs du -sh"
+alias dnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
 # --------------------[ System ]--------------------
 # Show / Hide hidden files in Finder.app
