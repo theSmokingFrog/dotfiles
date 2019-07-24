@@ -23,6 +23,9 @@ alias ff="find . -iname" ## Param with Quotes
 alias tarex="tar -vxzf"
 alias resource="source ~/.bash_profile && echo '» Reloading .bash_profile done!'"
 alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
+alias proxy="ssh -fN proxy"
+alias proxyc="ssh -O check proxy"
+alias proxyoff="ssh -O exit proxy"
 
 # --------------------[ Applications ]--------------------
 alias chrome="open -a /Applications/Google\ Chrome.app/"

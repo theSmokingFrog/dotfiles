@@ -139,75 +139,75 @@ function tre() {
 #########################################
 # Check CRT (Public Key)
 function openssl_list_crt() {
-	if [ -z "${1}" ]; then
-		echo "Usage: openssl_list_crt 1_CRT_LOCATION";
-		return 1;
-	fi;
-	openssl x509 -in ${1} -text -noout
+    if [ -z "${1}" ]; then
+        echo "Usage: openssl_list_crt 1_CRT_LOCATION";
+        return 1;
+    fi;
+    openssl x509 -in ${1} -text -noout
 }
 
 # Check KEY (Private Key)
 function openssl_list_key() {
-	if [ -z "${1}" ]; then
-		echo "Usage: openssl_list_key 1_KEY_LOCATION";
-		return 1;
-	fi;
-	openssl rsa -in privateKey.key -check
+    if [ -z "${1}" ]; then
+        echo "Usage: openssl_list_key 1_KEY_LOCATION";
+        return 1;
+    fi;
+    openssl rsa -in privateKey.key -check
 }
 
 # Check KEY (Private Key)
 function openssl_list_p12() {
-	if [ -z "${1}" ]; then
-		echo "Usage: openssl_list_p12 1_KEYSTORE_LOCATION";
-		return 1;
-	fi;
-	openssl pkcs12 -info -in ${1}
+    if [ -z "${1}" ]; then
+        echo "Usage: openssl_list_p12 1_KEYSTORE_LOCATION";
+        return 1;
+    fi;
+    openssl pkcs12 -info -in ${1}
 }
 
 # Generate P12 Keystore
 function openssl_generate_p12() {
-	if [ -z "${1}" -o -z "${2}" -o -z "${3}" -o -z "${4}" ]; then
-		echo "Usage: openssl_generate_p12 1_CERT_LOCATION 2_KEY_LOCATION 3_ALIAS_NAME 4_KEYSTORE_TARGET_LOCATION";
-		return 1;
-	fi;
-	openssl pkcs12 -export -in ${1} -inkey ${2} -name ${3} -out ${4}
+    if [ -z "${1}" -o -z "${2}" -o -z "${3}" -o -z "${4}" ]; then
+        echo "Usage: openssl_generate_p12 1_CERT_LOCATION 2_KEY_LOCATION 3_ALIAS_NAME 4_KEYSTORE_TARGET_LOCATION";
+        return 1;
+    fi;
+    openssl pkcs12 -export -in ${1} -inkey ${2} -name ${3} -out ${4}
 }
 
 
 # Generate a self-signed certificate
 function openssl_generate_cert() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: openssl_generate_cert 1_KEY_TARGET_LOCATION 2_CERT_TARGET_LOCATION";
-		return 1;
-	fi;
-	openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout ${1} -out ${2}
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: openssl_generate_cert 1_KEY_TARGET_LOCATION 2_CERT_TARGET_LOCATION";
+        return 1;
+    fi;
+    openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout ${1} -out ${2}
 }
 
 # Generate a certificate signing request (CSR) for an existing private key
 function openssl_generate_csr() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: openssl_generate_csr 1_KEY_LOCATION 2_CSR_TARGET_LOCATION";
-		return 1;
-	fi;
-	openssl req -out ${2} -key ${1} -new
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: openssl_generate_csr 1_KEY_LOCATION 2_CSR_TARGET_LOCATION";
+        return 1;
+    fi;
+    openssl req -out ${2} -key ${1} -new
 }
 
 # Convert DER cert to PEM
 function openssl_convert_der_to_pem() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: openssl_convert_der_to_pem 1_CRT_LOCATION 2_PEM_TARGET_LOCATION";
-		return 1;
-	fi;
-	openssl x509 -inform DER -outform PEM -in ${1} -out ${2}
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: openssl_convert_der_to_pem 1_CRT_LOCATION 2_PEM_TARGET_LOCATION";
+        return 1;
+    fi;
+    openssl x509 -inform DER -outform PEM -in ${1} -out ${2}
 }
 
 # Test connection with CA file
 function openssl_test_connection() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: openssl_test_connection 1_CA_CRT_FILE 2_TARGET_HOST 3_TARGET_PORT";
-		return 1;
-	fi;
-	openssl s_client -CAfile ${1} -connect ${2}:${3}
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: openssl_test_connection 1_CA_CRT_FILE 2_TARGET_HOST 3_TARGET_PORT";
+        return 1;
+    fi;
+    openssl s_client -CAfile ${1} -connect ${2}:${3}
 }
 
 #########################################
@@ -216,106 +216,106 @@ function openssl_test_connection() {
 # List certs
 function keytool_list() {
         if [ -z "${1}" ]; then
-		echo "Usage: keytool_list 1_KEYSTORE_LOCATION";
-		return 1;
-	fi;
+        echo "Usage: keytool_list 1_KEYSTORE_LOCATION";
+        return 1;
+    fi;
 
-	keytool -list -v -keystore ${1}
+    keytool -list -v -keystore ${1}
 }
 
 # List certs alternative
 function keytool_listalt() {
         if [ -z "${1}" ]; then
-		echo "Usage: keytool_listalt 1_FILE_LOCATION";
-		return 1;
-	fi;
+        echo "Usage: keytool_listalt 1_FILE_LOCATION";
+        return 1;
+    fi;
 
-	keytool -printcert -v -file ${1}
+    keytool -printcert -v -file ${1}
 }
 
 # List alias
 function keytool_list_alias() {
         if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: keytool_list_alias 1_KEYSTORE_LOCATION 2_ALIAS_NAME";
-		return 1;
-	fi;
+        echo "Usage: keytool_list_alias 1_KEYSTORE_LOCATION 2_ALIAS_NAME";
+        return 1;
+    fi;
 
-	keytool -list -v -keystore ${1} -alias ${2}
+    keytool -list -v -keystore ${1} -alias ${2}
 }
 
 # List Java cacerts
 function keytool_list_java() {
-	keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
+    keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
 }
 
 # Generate a Java keystore and key pair
 function keytool_generate_pkcs12() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: keytool_generate_pkcs12 1_ALIAS_NAME 2_KEYSTORE_LOCATION";
-		return 1;
-	fi;
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: keytool_generate_pkcs12 1_ALIAS_NAME 2_KEYSTORE_LOCATION";
+        return 1;
+    fi;
 
-	keytool -genkey -alias ${1} -keyalg RSA -keystore ${2} -storetype PKCS12 -storepass changeit -validity 730 -keysize 2048
+    keytool -genkey -alias ${1} -keyalg RSA -keystore ${2} -storetype PKCS12 -storepass changeit -validity 730 -keysize 2048
 }
 
 # Generate a Self Signed Certificate
 function keytool_generate_jks() {
-	if [ -z "${1}" -o -z "${2}" -o -z "${3}" -o -z "${4}" ]; then
-		echo "Usage: keytool_generate_jks 1_ALIAS_NAME 2_KEYSTORE_LOCATION 3_PASSWORD";
-		return 1;
-	fi;
+    if [ -z "${1}" -o -z "${2}" -o -z "${3}" -o -z "${4}" ]; then
+        echo "Usage: keytool_generate_jks 1_ALIAS_NAME 2_KEYSTORE_LOCATION 3_PASSWORD";
+        return 1;
+    fi;
 
-	keytool -genkey -alias ${1} -keyalg RSA -keystore ${2} -storetype JKS -storepass changeit -validity 730 -keysize 2048
+    keytool -genkey -alias ${1} -keyalg RSA -keystore ${2} -storetype JKS -storepass changeit -validity 730 -keysize 2048
 }
 
 # Import a root or intermediate CA certificate to an "existing" Java keystore. If not existing the keystore is simply created
 # and contains the imported certificate.
 function keytool_import_cert() {
         if [ -z "${1}" -o -z "${2}" -o -z "${3}" ]; then
-		echo "Usage: keytool_import_cert 1_ALIAS_NAME 2_IMPORT_CERT_LOCATION 3_KEYSTORE_LOCATION";
-		return 1;
-	fi;
+        echo "Usage: keytool_import_cert 1_ALIAS_NAME 2_IMPORT_CERT_LOCATION 3_KEYSTORE_LOCATION";
+        return 1;
+    fi;
 
-	keytool -import -trustcacerts -alias ${1} -file ${2} -keystore ${3}
+    keytool -import -trustcacerts -alias ${1} -file ${2} -keystore ${3}
 }
 
 # Export cert from keystore
 function keytool_export_cert() {
         if [ -z "${1}" -o -z "${2}" -o -z "${3}" ]; then
-		echo "Usage: keytool_export_cert 1_ALIAS_NAME 2_KEYSTORE_LOCATION 3_TARGET_FILE";
-		return 1;
-	fi;
+        echo "Usage: keytool_export_cert 1_ALIAS_NAME 2_KEYSTORE_LOCATION 3_TARGET_FILE";
+        return 1;
+    fi;
 
-	keytool -export -alias ${1} -keystore ${2} -file ${3}
+    keytool -export -alias ${1} -keystore ${2} -file ${3}
 }
 
 # Delete a cert from a keystore
 function keytool_delete_cert() {
         if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: keytool_delete_cert 1_ALIAS_NAME 2_KEYSTORE_LOCATION";
-		return 1;
-	fi;
+        echo "Usage: keytool_delete_cert 1_ALIAS_NAME 2_KEYSTORE_LOCATION";
+        return 1;
+    fi;
 
-	keytool -delete -alias ${1} -keystore ${2}
+    keytool -delete -alias ${1} -keystore ${2}
 }
 
 # Change the password of a keystore
 function keytool_change_pw() {
         if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: keytool_change_pw 1_KEYSTORE_LOCATION 2_NEW_PASSWORD";
-		return 1;
-	fi;
+        echo "Usage: keytool_change_pw 1_KEYSTORE_LOCATION 2_NEW_PASSWORD";
+        return 1;
+    fi;
 
-	keytool -storepasswd -keystore ${1} -new ${2}
+    keytool -storepasswd -keystore ${1} -new ${2}
 }
 
 # Convert JKS keystore to PKCS12 keystore
 function keytool_convert_jks_to_pkcs12() {
         if [ -z "${1}" -o -z "${2}" -o -z "${3}" -o -z "${4}" ]; then
-		echo "Usage: keytool_convert_jks_to_pkcs121 1_SRC_KEYSTORE_LOCATION 2_DEST_KEYSTORE_LOCATION 3_SRC_ALIAS 4_DEST_ALIAS";
-		return 1;
-	fi;
-	keytool -importkeystore -srckeystore ${1} -destkeystore ${2} -srcstoretype JKS -deststoretype PKCS12 -deststorepass changeit -srcalias ${3} -destalias ${4}
+        echo "Usage: keytool_convert_jks_to_pkcs121 1_SRC_KEYSTORE_LOCATION 2_DEST_KEYSTORE_LOCATION 3_SRC_ALIAS 4_DEST_ALIAS";
+        return 1;
+    fi;
+    keytool -importkeystore -srckeystore ${1} -destkeystore ${2} -srcstoretype JKS -deststoretype PKCS12 -deststorepass changeit -srcalias ${3} -destalias ${4}
 }
 
 #########################################
@@ -324,17 +324,22 @@ function keytool_convert_jks_to_pkcs12() {
 # Create a root CA
 function easypki_create_ca() {
         if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: easypki_create_ca 1_FILENAME 2_CA_NAME";
-		return 1;
-	fi;
-	easypki create --filename ${1} --ca ${2}
+        echo "Usage: easypki_create_ca 1_FILENAME 2_CA_NAME";
+        return 1;
+    fi;
+    easypki create --filename ${1} --ca ${2}
 }
 
 # Create certs signed by CA
 function easypki_create_cert_signed_by_ca() {
         if [ -z "${1}" -o -z "${2}" -o -z "${3}" ]; then
-		echo "Usage: easypki_create_cert_signed_by_ca 1_CA_NAME 2_DNS_ALT_NAME 3_NAME";
-		return 1;
-	fi;
-	easypki create --ca-name ${1} --dns ${2} ${3}
+        echo "Usage: easypki_create_cert_signed_by_ca 1_CA_NAME 2_DNS_ALT_NAME 3_NAME";
+        return 1;
+    fi;
+    easypki create --ca-name ${1} --dns ${2} ${3}
+}
+
+function wttr()
+{
+    curl -s -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Braunschweig}"
 }
