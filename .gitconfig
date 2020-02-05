@@ -6,11 +6,17 @@
     # View the current working tree status using the short format
     s = status -s
 
+    # Shortcut to view full Status output
+    ss = status
+
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
     # 'git di $number' shows the diff between the state '$number' revisions ago and the current state
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+    # Clone a repository including all submodules
+    c = clone --recursive
 
     # Commit all changes
     ca = !git add -A && git commit -av
@@ -22,6 +28,9 @@
     tags = tag -l
     branches = branch -a
     remotes = remote -v
+
+    # List aliases
+    aliases = config --get-regexp alias
 
     # Amend the currently staged files to the latest commit
     amend = commit --amend --reuse-message=HEAD
@@ -56,11 +65,11 @@
     # Shortcut to list ignored files
     ig = status --ignored
 
-    lg = log --pretty=shortlog --date=short
-
+    # Shortcut to checkout another branch
     co = checkout
 
-    bytag = rev-list -n 1
+    # Show a single commit with all existent details
+    sc = show --format=fuller
 
 [apply]
 

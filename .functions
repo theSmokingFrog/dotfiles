@@ -61,15 +61,6 @@ if [ $? -eq 0 ]; then
     }
 fi;
 
-# Create a git.io short URL
-function gitio() {
-    if [ -z "${1}" -o -z "${2}" ]; then
-        echo "Usage: \`gitio slug url\`";
-        return 1;
-    fi;
-    curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
-}
-
 # Compare original and gzipped file size
 function gz() {
     local origsize=$(wc -c < "$1");
@@ -101,15 +92,6 @@ function escape() {
 # Decode \x{ABCD}-style Unicode escape sequences
 function unidecode() {
     perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
-    # print a newline unless we’re piping the output to another program
-    if [ -t 1 ]; then
-        echo ""; # newline
-    fi;
-}
-
-# Get a character’s Unicode code point
-function codepoint() {
-    perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
     # print a newline unless we’re piping the output to another program
     if [ -t 1 ]; then
         echo ""; # newline

@@ -5,7 +5,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~"
 alias -- --="cd - > /dev/null"
 
 # --------------------[ Destinations ]--------------------
@@ -42,7 +41,7 @@ fi
 alias ll="ls -lh"
 alias lt="ls -lht"
 alias la="ls -lhA"
-alias ld="ls -lh | grep '^d'"
+alias ld="ls -lh | grep --color=never '^d'"
 
 # --------------------[ grep Colors ]--------------------
 # Always enable colored `grep` output (Note: 'GREP_OPTIONS="--color=auto"' is deprecated, hence the alias usage.)
@@ -62,15 +61,6 @@ alias pull="git pull"
 alias merge="git merge"
 alias cpick="git cherry-pick"
 alias fp="fetch && pull"
-
-alias logd="git log --oneline --decorate --graph"
-alias loga="git log --oneline --decorate --graph --all"
-
-# --------------------[ SVN ]--------------------
-alias sup='svn update'
-alias sst='svn status'
-alias sco='svn checkout'
-alias sci='svn commit'
 
 # --------------------[ Docker ]--------------------
 alias dps='docker ps'
@@ -119,17 +109,10 @@ alias lnm="find . -name 'node_modules' -type d -prune|xargs du -sh"
 alias dnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
 # --------------------[ System ]--------------------
-# Show / Hide hidden files in Finder.app
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Show / Hide all desktop Icons
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Enable / Disable Spotlight
-alias spotlighton="sudo mdutil -a -i on"
-alias spotlightoff="sudo mdutil -a -i off"
 
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend" ## Lock the screen (when going AFK)
 
