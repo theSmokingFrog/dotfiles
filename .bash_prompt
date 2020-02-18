@@ -71,8 +71,10 @@ fi;
 # Highlight the user name when logged in as root.
 if [[ "${USER}" == "root" ]]; then
     userStyle="${red}";
+    userText="\u";
 else
     userStyle="${orange}";
+    userText="¯\_(ツ)_/¯"
 fi;
 
 # Highlight the hostname when connected via SSH.
@@ -82,10 +84,14 @@ else
     hostStyle="${yellow}";
 fi;
 
+# (╯°□°)╯︵ ┻━┻
+# ¯\_(ツ)_/¯
+# \u
+
 # Set the terminal title and prompt.
 PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
-PS1+="\[${userStyle}\]\u"; # username
+PS1+="\[${userStyle}\]${userText}"; # username
 PS1+="\[${grey}\] @ ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${grey}\] » ";
