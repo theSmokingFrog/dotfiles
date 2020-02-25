@@ -134,7 +134,7 @@ function openssl_list_key() {
         echo "Usage: openssl_list_key 1_KEY_LOCATION";
         return 1;
     fi;
-    openssl rsa -in privateKey.key -check
+    openssl rsa -in ${1} -check
 }
 
 # Check KEY (Private Key)
