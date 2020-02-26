@@ -71,6 +71,9 @@
     # Show a single commit with all existent details
     sc = show --format=fuller
 
+    # Squash the latest n commits together and commit them - be careful with already pushed stuff
+    squash = "!f() { git reset --soft HEAD~$1; git commit -a; }; f"
+
 [apply]
 
     # Detect whitespace errors when applying a patch
