@@ -55,4 +55,5 @@ if test -e "${HOME}/.iterm2_shell_integration.bash"; then
   source "${HOME}/.iterm2_shell_integration.bash"
   iterm2_set_user_var nodeVersion "$(node -v)"
   iterm2_set_user_var npmVersion "$(npm -v)"
+  iterm2_set_user_var javaVersion "$(fetchJavaVersion)"
 fi
