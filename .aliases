@@ -10,18 +10,24 @@ alias -- --="cd - > /dev/null"
 # --------------------[ Destinations ]--------------------
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias gg="cd /vcs/git/"
 alias gd="cd ~/Development/"
+alias gg="cd /vcs/git/"
 alias gs="cd /vcs/svn/"
 
 # --------------------[ Essentials ]--------------------
 alias cl="clear"
 alias psx="ps auxw"
 alias xx="exit"
-alias ff="find . -iname" ## Param with Quotes
+alias ff="find . -iname"
 alias tarex="tar -vxzf"
 alias resource="source ~/.bash_profile && echo '» Reloading .bash_profile done!'"
 alias reload="exec $SHELL -l" ## Reload the shell (i.e. invoke as a login shell)
+
+# --------------------[ sdkman shortcuts ]--------------------
+alias j11="sdk use java 11.0.2-amzn && reloadItermVars"
+alias j8="sdk use java 8.0.222-amzn && reloadItermVars"
+
+# --------------------[ SSH Proxy ]-----------------------
 alias proxy="ssh -fN proxy"
 alias proxyc="ssh -O check proxy"
 alias proxyoff="ssh -O exit proxy"
@@ -32,10 +38,10 @@ alias typora="open -a ~/Applications/Typora.app/"
 
 # --------------------[ Listings ]--------------------
 # Detect which `ls` flavor is in use (GNU oder OSX)
-if ls --color > /dev/null 2>&1; then
-    alias ls="ls --color=auto"
+if ls --color >/dev/null 2>&1; then
+  alias ls="ls --color=auto"
 else
-    alias ls="ls -G"
+  alias ls="ls -G"
 fi
 
 alias ll="ls -lh"
@@ -50,6 +56,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # --------------------[ Git ]--------------------
+alias g="git"
 alias clone="git clone"
 alias log="git log"
 alias diff="git diff"
@@ -72,16 +79,19 @@ alias dcup='docker-compose up'
 alias dcdown='docker-compose down'
 alias dcstop='docker-compose stop'
 alias dcstart='docker-compose start'
+
 alias dcg='docker-compose -f docker-compose-base.yml -f docker-compose-dev.yml'
 alias docker-composeg='docker-compose -f docker-compose-base.yml -f docker-compose-dev.yml'
 
 function dbash() {
-    docker exec -it ${1} "bash"
+  docker exec -it "${1}" "bash"
 }
 
 # --------------------[ Node / NPM ]--------------------
 alias nlg='npm -g list --depth=0'
 alias nog='npm -g outdated'
+alias lnm="find . -name 'node_modules' -type d -prune|xargs du -sh"
+alias dnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
 # --------------------[ Homebrew ]--------------------
 alias brup='brew update'
@@ -91,7 +101,7 @@ alias brli='brew list'
 alias brcl='brew cleanup'
 
 # --------------------[ Time and Date ]--------------------
-alias week='date +%V' # Diplays the week number
+alias week='date +%V'                                                             # Diplays the week number
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date' # Stopwatch
 
 # --------------------[ Network ]--------------------
@@ -100,13 +110,12 @@ alias localip="ipconfig getifaddr"
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'" ## Shows active Network interfaces
 
 # --------------------[ Various ]--------------------
-command -v hd > /dev/null || alias hd="hexdump -C" ## Canonical hex dump; some systems have this symlinked
-command -v md5sum > /dev/null || alias md5sum="md5" ## macOS has no 'md5sum', so use 'md5' as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum" ## macOS has no 'sha1sum', so use 'shasum' as a fallback
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete" ## Recursively delete #.DS_Store' files
-alias cleanemptydirs="find . -type d -depth -empty -exec rmdir "{}" \;" ## Recursively deletes empty folders within a folder structure
-alias lnm="find . -name 'node_modules' -type d -prune|xargs du -sh"
-alias dnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+command -v hd >/dev/null || alias hd="hexdump -C"                     ## Canonical hex dump; some systems have this symlinked
+command -v md5sum >/dev/null || alias md5sum="md5"                    ## macOS has no 'md5sum', so use 'md5' as a fallback
+command -v sha1sum >/dev/null || alias sha1sum="shasum"               ## macOS has no 'sha1sum', so use 'shasum' as a fallback
+
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"         ## Recursively delete #.DS_Store' files
+alias cleanemptydirs="find . -type d -depth -empty -exec rmdir {} \;" ## Recursively deletes empty folders within a folder structure
 
 # --------------------[ System ]--------------------
 
@@ -122,7 +131,7 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 100'"
 
 # --------------------[ Various ]--------------------
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"' ## URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'        ## URL-encode strings
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py' ## Merge PDF files (Usage: 'mergepdf -o output.pdf input{1,2,3}.pdf')
-alias path='echo -e ${PATH//:/\\n}' ## Print each PATH entry on a separate line
-alias badge="tput bel" ##  Ring the terminal bell, and put a badge on Terminal.app’s Dock icon (useful when executing time-consuming commands)
+alias path='echo -e ${PATH//:/\\n}'                                                              ## Print each PATH entry on a separate line
+alias badge="tput bel"                                                                           ##  Ring the terminal bell, and put a badge on Terminal.app’s Dock icon (useful when executing time-consuming commands)

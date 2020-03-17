@@ -42,7 +42,6 @@ export NVM_DIR="$HOME/.nvm"
 # Arcanist
 [ -s "$ARCANIST/resources/shell/bash-completion" ] && \. "$ARCANIST/resources/shell/bash-completion" # bash completion for arcanist
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 

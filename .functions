@@ -116,6 +116,16 @@ function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+function portFind()
+{
+if [ "$#" -ne 1 ]; then
+    echo "Illegal number of parameters"
+else
+    lsof -n -i TCP:$1 | grep LISTEN
+fi
+}
+alias pf=portFind
+
 #########################################
 # OPENSSL
 #########################################
@@ -351,4 +361,13 @@ function fetchJavaVersion()
     done
   fi
   echo "$result"
+}
+
+function reloadItermVars() {
+  if test -e "${HOME}/.iterm2_shell_integration.bash"; then
+  source "${HOME}/.iterm2_shell_integration.bash"
+  iterm2_set_user_var nodeVersion "$(node -v)"
+  iterm2_set_user_var npmVersion "$(npm -v)"
+  iterm2_set_user_var javaVersion "$(fetchJavaVersion)"
+fi
 }
